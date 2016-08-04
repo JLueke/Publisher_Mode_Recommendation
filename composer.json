@@ -1,0 +1,23 @@
+{
+    "name": "publisher/recommendation",
+    "description": "Publishing Mode for publisher/publisher.",
+    "keywords": ["oauth", "publish", "post", "recommendation"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jacqueline Lueken",
+            "email": "jac_lueken@live.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "publisher/publisher" : "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Publisher\\Mode\\Recommendation\\": "src/Recommendation/",
+            "Unit\\Publisher\\Recommendation\\": "tests/Unit/Recommendation",
+            "Mock\\Publisher\\Recommendation\\": "tests/Mock"
+        }
+    }
+}
