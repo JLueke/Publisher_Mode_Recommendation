@@ -17,7 +17,7 @@ class RecommendationModeTest extends AbstractModeTest
     protected function getTestEntry()
     {
         return $this->getMockForAbstractClass(
-            'Mock\\Publisher\\Recommendation\\MockUser'
+            'Mock\\Publisher\\Mode\\Recommendation\\MockUser'
         );
     }
     

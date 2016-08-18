@@ -1,6 +1,6 @@
 <?php
 
-namespace Mock\Publisher\Recommendation;
+namespace Mock\Publisher\Mode\Recommendation;
 
 use Publisher\Entry\EntryInterface;
 use Publisher\Mode\Recommendation\RecommendationInterface;
