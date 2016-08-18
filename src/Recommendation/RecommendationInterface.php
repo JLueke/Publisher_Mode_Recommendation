@@ -9,7 +9,7 @@ interface RecommendationInterface
         string $message,
         string $url = '',
         string $title = '',
-        int $date = null
+        $date = null
     );
 }
 
