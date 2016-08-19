@@ -32,63 +32,6 @@ abstract class AbstractRecommendation
         );
     }
     
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        static::addMessageConstraints($metadata);
-        static::addUrlConstraints($metadata);
-        static::addTitleConstraints($metadata);
-        static::addDateConstraints($metadata);
-        
-        $metadata->addConstraint(new Assert\Callback('validateMessageLength'));
-    }
-    
-    protected static function addMessageConstraints(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('message', new Assert\NotBlank());
-    }
-    
-    protected static function addUrlConstraints(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('url', new Assert\Url());
-    }
-    
-    protected static function addTitleConstraints(ClassMetadata $metadata)
-    {
-        
-    }
-    
-    protected static function addDateConstraints(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('date', new Assert\Blank(array(
-            'message' => 'recommendation.date.notsupported'
-        )));
-    }
-    
-    /**
-     * Validates if the message doesn't exceed
-     * the maximum, allowed number of characters.
-     * 
-     * @param ExecutionContextInterface $context
-     * @param mixed $payload
-     * 
-     * @return void
-     */
-    public function validateMessageLength(
-        ExecutionContextInterface $context,
-        $payload
-    ) {
-        // maximum, allowed number of characters
-        $max = $this->getMaxLengthOfMessage();
-        
-        $message = $this->createCompleteMessage();
-        
-        if (strlen($message) > $max) {
-            $context->buildViolation($this->getMaxLengthViolationMessage($max))
-                ->atPath('message')
-                ->addViolation();
-        }
-    }
-    
     public function setMessage(string $message)
     {
         $this->message = $message;
@@ -127,6 +70,52 @@ abstract class AbstractRecommendation
     public function getDate()
     {
         return $this->date;
+    }
+    
+    // Validation
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addConstraint(new Assert\Callback('validateMessageLength'));
+    }
+    
+    /**
+     * Validates if the message doesn't exceed
+     * the maximum, allowed number of characters.
+     * 
+     * @param ExecutionContextInterface $context
+     * @param mixed $payload
+     * 
+     * @return void
+     */
+    public function validateMessageLength(
+        ExecutionContextInterface $context,
+        $payload
+    ) {
+        // maximum, allowed number of characters
+        $max = $this->getMaxLengthOfMessage();
+        
+        $message = $this->createCompleteMessage();
+        
+        if (strlen($message) > $max) {
+            $context->buildViolation($this->getMaxLengthViolationMessage($max))
+                ->atPath('message')
+                ->addViolation();
+        }
+    }
+    
+    protected static function addDefaultConstraints(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('message', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('url', new Assert\Url());
+    }
+    
+    protected static function addScheduleNotSupportedConstraint(
+        ClassMetadata $metadata
+    ) {
+        $metadata->addPropertyConstraint('date', new Assert\Blank(array(
+            'message' => 'recommendation.date.notsupported'
+        )));
     }
     
     /**

@@ -11,13 +11,15 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "publisher/publisher" : "dev-master"
+        "publisher/publisher": "dev-master",
+        "symfony/form": "^3.1",
+        "symfony/validator": "^3.1"
     },
     "autoload": {
         "psr-4": {
             "Publisher\\Mode\\Recommendation\\": "src/Recommendation/",
-            "Unit\\Publisher\\Recommendation\\": "tests/Unit/Recommendation",
-            "Mock\\Publisher\\Recommendation\\": "tests/Mock"
+            "Unit\\Publisher\\Mode\\Recommendation\\": "tests/Unit/Recommendation",
+            "Mock\\Publisher\\Mode\\Recommendation\\": "tests/Mock"
         }
     }
 }
