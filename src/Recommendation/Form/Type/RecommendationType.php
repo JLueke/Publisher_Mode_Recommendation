@@ -7,7 +7,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class RecommendationType extends AbstractType
 {
@@ -18,7 +17,6 @@ class RecommendationType extends AbstractType
             ->add('title', TextType::class, $this->getTitleConfig())
             ->add('message', TextareaType::class, $this->getMessageConfig())
             ->add('url', UrlType::class, $this->getUrlConfig())
-            ->add('date', DateTimeType::class, $this->getDateConfig())
         ;
     }
     
@@ -42,15 +40,6 @@ class RecommendationType extends AbstractType
         return array(
             'required' => false,
             'empty_data' => ''
-        );
-    }
-    
-    protected function getDateConfig()
-    {
-        return array(
-            'required' => false,
-            'empty_data' => null,
-            'input' => 'timestamp'
         );
     }
     

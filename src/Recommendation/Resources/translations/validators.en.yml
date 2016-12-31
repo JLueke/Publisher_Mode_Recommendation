@@ -1,9 +1,0 @@
-recommendation.date.notsupported: This Entry doesn't support scheduled publishing.
-
-"No %invalidCharacters% allowed": No %invalidCharacters% allowed
-"Title, message and URL combined shouldn't exceed %max% characters.": Title, message and URL combined shouldn't exceed %max% characters.
-"Message and URL combined shouldn't exceed %max% characters.": Message and URL combined shouldn't exceed %max% characters.
-"Message and title combined shouldn't exceed %max% characters.": Message and title combined shouldn't exceed %max% characters.
-"Title shouldn't exceed %max% characters.": Title shouldn't exceed %max% characters.
-"URL shouldn't exceed %max% characters.": URL shouldn't exceed %max% characters.
-"Choose a date between %minMinutes% minutes and %maxMonths% months ahead from now (UTC).": "Choose a date between %minMinutes% minutes and %maxMonths% months ahead from now (UTC)."

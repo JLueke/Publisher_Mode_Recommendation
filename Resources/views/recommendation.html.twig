@@ -1,5 +1,3 @@
-{% trans_default_domain 'Mode_Recommendation' %}
-
 {% block publisher_content %}
     {% for formPart in form %}
         {% if 'recommendation' in formPart.vars.block_prefixes %}
@@ -8,15 +6,6 @@
                 {{ form_row(formPart.title) }}
                 {{ form_row(formPart.message) }}
                 {{ form_row(formPart.url) }}
-                <div class="date">
-                    {{ form_errors(formPart.date) }}
-                    <div class="date-date">
-                        {{ form_row(formPart.date.date) }}
-                    </div>
-                    <div class="date-time">
-                        {{ form_row(formPart.date.time) }}
-                    </div>
-                </div>
             </div>
         {% endif %}
     {% endfor %}
