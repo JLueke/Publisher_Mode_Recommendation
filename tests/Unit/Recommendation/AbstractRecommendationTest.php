@@ -27,12 +27,15 @@ class AbstractRecommendationTest extends \PHPUnit_Framework_TestCase
     /**
      * An instance of a Recommendation entity that shall be tested.
      * 
+     * @param array $content
+     * 
      * @return AbstractRecommendation
      */
-    protected function createRecommendation()
+    protected function createRecommendation(array $content = array())
     {
         return $this->getMockForAbstractClass(
-            'Publisher\Mode\Recommendation\AbstractRecommendation'
+            'Publisher\Mode\Recommendation\AbstractRecommendation',
+            array($content)
         );
     }
     

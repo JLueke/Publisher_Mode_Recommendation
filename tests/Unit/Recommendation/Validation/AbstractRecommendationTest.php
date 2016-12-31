@@ -14,9 +14,7 @@ abstract class AbstractRecommendationTest extends \PHPUnit_Framework_TestCase
         $builder = Validation::createValidatorBuilder();
         $builder->setConstraintValidatorFactory(new ConstraintValidatorFactory());
         $builder->addObjectInitializers(array());
-        $paths = $this->getYamlValidationPaths();
-        $paths[] = __DIR__ . '/../../../../Resources/config/validation.yml';
-        $builder->addYamlMappings($paths);
+        $builder->addYamlMappings($this->getYamlValidationPaths());
         $builder->addMethodMapping('loadValidatorMetadata');
         
         $this->validator = $builder->getValidator();
@@ -46,18 +44,53 @@ abstract class AbstractRecommendationTest extends \PHPUnit_Framework_TestCase
     public abstract function getExceededMessageData();
     
     /**
+     * Test the validation given by the EntryModeEntity parent.
+     * 
+     * @dataProvider getValidationTestData
+     */
+    public function testValidation(array $content, $numberOfErrors)
+    {
+        $recommendation = $this->createRecommendation($content);
+        
+        $errors = $this->validator->validate($recommendation);
+        
+        $this->assertEquals($numberOfErrors, count($errors));
+    }
+    
+    /**
+     * Returns data containing a test content
+     * and the expected number of validation error.
+     * 
+     * @return array
+     */
+    public function getValidationTestData()
+    {
+        $testData = array(
+            array(array(), 1),
+            array(array('message' => 'Foo', 'url' => 'http://www.example.com'), 0),
+            array(array('message' => 'Foo', 'url' => 'no valid URL'), 1)
+        );
+        
+        return $testData;
+    }
+    
+    /**
      * An instance of a Recommendation entity that shall be tested.
+     * 
+     * @param array $content
      * 
      * @return AbstractRecommendation
      */
-    protected abstract function createRecommendation();
+    protected abstract function createRecommendation(array $content = array());
     
     /**
-     * Returns the paths of the yaml validation files
-     * that specify the validation for a certain Recommendation entity.
+     * Returns the paths of the yaml validation files.
      * 
      * @return string[]
      */
-    protected abstract function getYamlValidationPaths();
+    protected function getYamlValidationPaths()
+    {
+        return array(__DIR__ . '/../../../../Resources/config/validation.yml');
+    }
     
 }

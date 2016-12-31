@@ -21,13 +21,13 @@ abstract class AbstractRecommendation extends AbstractEntryModeEntity
     protected $title;
     
     /**
-     * @param string[] $content contains a message, url and title
+     * @param string[]|null $content contains a message, url and title
      */
     public function __construct(array $content = array())
     {
-        $this->message = isset($content['message']) ? $content['message'] : '';
-        $this->url = isset($content['url']) ? $content['url'] : '';
-        $this->title = isset($content['title']) ? $content['title'] : '';
+        $this->message = isset($content['message']) ? $content['message'] : null;
+        $this->url = isset($content['url']) ? $content['url'] : null;
+        $this->title = isset($content['title']) ? $content['title'] : null;
     }
     
     /**

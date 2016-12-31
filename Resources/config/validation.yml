@@ -1,4 +1,4 @@
-Publisher\Mode\Recommendation\AbstractRecommendationType:
+Publisher\Mode\Recommendation\AbstractRecommendation:
     properties:
         message:
             - NotBlank: ~
