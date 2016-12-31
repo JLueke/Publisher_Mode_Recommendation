@@ -2,9 +2,9 @@
 A Publisher Mode to fill an Entry as a recommendation.
 
 The recommendation contains
-    - a title
-    - a message (required)
-    - an URL
+- a title
+- a message (required)
+- an URL
 
 # Installation
 The recommended way to install this is through [composer](http://getcomposer.org).
@@ -27,8 +27,8 @@ $ php composer.phar install
 ```
 
 # Form (symfony/form)
-You can find a symfony form in src/Recommendation/Form/Type/
-and a twig template in Resources/view/.
+You can find a symfony form in src/Recommendation/Form/Type
+and a twig template in Resources/view.
 
 # Validation with symfony/validator
 A general validation config for the entity is provided in Resources/config/validation.yml.
