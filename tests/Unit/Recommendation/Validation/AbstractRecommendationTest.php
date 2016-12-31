@@ -15,7 +15,7 @@ abstract class AbstractRecommendationTest extends \PHPUnit_Framework_TestCase
         $builder->setConstraintValidatorFactory(new ConstraintValidatorFactory());
         $builder->addObjectInitializers(array());
         $paths = $this->getYamlValidationPaths();
-        $paths[] = __DIR__ . '/../../Resources/config/validation.yaml';
+        $paths[] = __DIR__ . '/../../../../Resources/config/validation.yml';
         $builder->addYamlMappings($paths);
         $builder->addMethodMapping('loadValidatorMetadata');
         
