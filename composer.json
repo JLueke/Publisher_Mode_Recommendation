@@ -1,7 +1,7 @@
 {
-    "name": "publisher/recommendation",
+    "name": "publisher/mode_recommendation",
     "description": "Publishing Mode for publisher/publisher.",
-    "keywords": ["oauth", "publish", "post", "recommendation"],
+    "keywords": ["publisher", "mode", "recommendation", "publish", "post", "oauth"],
     "license": "MIT",
     "authors": [
         {
@@ -12,8 +12,14 @@
     "require": {
         "php": ">=7.0.0",
         "publisher/publisher": "dev-master",
-        "symfony/form": "^3.1",
+        "symfony/form": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
         "symfony/validator": "^3.1"
+    },
+    "suggest": {
+        "symfony/validator": "Validate the entities with the configuration provided in Resources/config/validation.xml"
     },
     "autoload": {
         "psr-4": {

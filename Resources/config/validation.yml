@@ -1,0 +1,6 @@
+Publisher\Mode\Recommendation\AbstractRecommendationType:
+    properties:
+        message:
+            - NotBlank: ~
+        url:
+            - Url: ~

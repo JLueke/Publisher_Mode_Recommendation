@@ -18,7 +18,7 @@ class RecommendationTypeTest extends TypeTestCase
         $form->submit($formData);
 
         $this->assertTrue($form->isSynchronized());
-        var_dump($form->getData());
+        
         $this->assertEquals($formData, $form->getData());
     }
     
@@ -29,14 +29,7 @@ class RecommendationTypeTest extends TypeTestCase
                 array(
                     'message' => 'foo',
                     'url' => 'http://www.example.com',
-                    'title' => 'bar',
-                    'date' => null
-                ),
-                array(
-                    'message' => 'foo',
-                    'url' => 'http://www.example.com',
-                    'title' => 'bar',
-                    'date' => 1471626215
+                    'title' => 'bar'
                 )
             )
         );
