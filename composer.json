@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "publisher/publisher": "dev-master",
+        "publisher/publisher": "0.9.1",
         "symfony/form": "^3.1"
     },
     "require-dev": {
